@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ose l'oral — Des mini-jeux pour prendre la parole</title>
+  <meta name="description" content="Des mini-jeux gratuits pour t'entraîner à parler : improviser, structurer, tenir sans filet. Sans compte, directement depuis ton téléphone.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- En-tête : le nom "Ose l'oral" est un placeholder, à remplacer ici et dans <title> -->
+  <header class="site-header">
+    <a href="index.html" class="logo">
+      <span class="logo-bubble" aria-hidden="true">💬</span>
+      <span class="logo-text">Ose l'oral</span>
+    </a>
+  </header>
+
+  <main>
+
+    <!-- Présentation du concept -->
+    <section class="hero">
+      <p class="hero-kicker">Salut toi 👋</p>
+      <h1 class="hero-title">
+        Parler, ça s'entraîne.<br>
+        <span class="highlight">Et ça peut être fun.</span>
+      </h1>
+      <p class="hero-text">
+        J'ai créé ce petit coin du web pour qu'on puisse s'exercer à l'oral sans pression :
+        improviser sur un sujet surprise, préparer une mini-présentation en 15 minutes,
+        tenir le plus longtemps possible sans un seul « euh »…
+      </p>
+      <p class="hero-text">
+        Pas de compte, pas d'inscription. Tu choisis un jeu, tu parles, tu progresses.
+        Vas-y, lance-toi&nbsp;!
+      </p>
+      <a href="#jeux" class="btn btn-primary">Choisir mon jeu ↓</a>
+    </section>
+
+    <!-- Les 4 jeux -->
+    <section id="jeux" class="games" aria-labelledby="games-title">
+      <h2 id="games-title" class="section-title">Les jeux</h2>
+
+      <div class="games-grid">
+
+        <a href="recherche-express.html" class="game-card game-card--coral">
+          <span class="game-icon" aria-hidden="true">🔎</span>
+          <h3 class="game-name">Recherche Express</h3>
+          <p class="game-pitch">15 minutes pour fouiller un sujet, puis à toi de le présenter comme un pro.</p>
+          <span class="game-tag">Préparation · 15 min</span>
+          <span class="btn btn-card">Jouer</span>
+        </a>
+
+        <a href="roulette.html" class="game-card game-card--sun">
+          <span class="game-icon" aria-hidden="true">🎡</span>
+          <h3 class="game-name">Roulette de sujets</h3>
+          <p class="game-pitch">Un sujet tombe au hasard. Zéro préparation : tu parles, tout de suite.</p>
+          <span class="game-tag">Impro · Solo ou en groupe</span>
+          <span class="btn btn-card">Jouer</span>
+        </a>
+
+        <a href="parle-ou-perds.html" class="game-card game-card--teal">
+          <span class="game-icon" aria-hidden="true">🔥</span>
+          <h3 class="game-name">Parle ou Perds</h3>
+          <p class="game-pitch">Pas de silence, pas de « euh ». Tiens le plus longtemps possible et bats ton record.</p>
+          <span class="game-tag">Défi · Contre la montre</span>
+          <span class="btn btn-card">Jouer</span>
+        </a>
+
+        <a href="ma-routine.html" class="game-card game-card--violet">
+          <span class="game-icon" aria-hidden="true">🌱</span>
+          <h3 class="game-name">Ma Routine</h3>
+          <p class="game-pitch">Ma méthode en 6 étapes pour progresser un peu chaque jour. Coche, avance, recommence.</p>
+          <span class="game-tag">Méthode · 6 étapes</span>
+          <span class="btn btn-card">Commencer</span>
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Fait avec 🧡 pour celles et ceux qui veulent oser parler.</p>
+    <p class="footer-small">© <span id="year"></span> Ose l'oral</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

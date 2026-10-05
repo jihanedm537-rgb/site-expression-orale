@@ -1,0 +1,28 @@
+# Systèmes d'exploitation
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp
+*~
+
+# Dépendances et builds (si un outil est ajouté plus tard)
+node_modules/
+dist/
+build/
+.cache/
+
+# Hébergement (Vercel, Netlify)
+.vercel/
+.netlify/
+
+# Variables d'environnement
+.env
+.env.*
+
+# Logs
+*.log
+npm-debug.log*
