@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ma Routine — Ose l'oral</title>
+  <meta name="description" content="Ma méthode en 6 étapes pour progresser à l'oral un peu chaque jour : échauffement, sujet, 2 minutes de parole, réécoute, un point à améliorer, nouvel essai.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="index.html" class="logo">
+      <span class="logo-bubble" aria-hidden="true">💬</span>
+      <span class="logo-text">Ose l'oral</span>
+    </a>
+  </header>
+
+  <main class="game-page game-page--violet">
+
+    <a href="index.html" class="back-link">← Tous les jeux</a>
+
+    <div class="game-intro">
+      <span class="game-icon" aria-hidden="true">🌱</span>
+      <h1 class="game-title">Ma Routine</h1>
+      <p class="game-lead">
+        Voici la méthode que j'utilise pour progresser à l'oral. Six étapes, une quinzaine de minutes :
+        pas besoin d'être parfait·e, juste régulier·e. Clique sur une étape pour la déplier,
+        coche-la quand c'est fait, et je garde ta progression pour la prochaine fois.
+      </p>
+    </div>
+
+    <!-- Progression -->
+    <section class="routine-progress" aria-label="Ta progression">
+      <p class="routine-progress-text" id="progress-text" aria-live="polite">0 étape sur 6</p>
+      <div class="timer-bar" aria-hidden="true"><div class="timer-bar-fill" id="progress-bar"></div></div>
+    </section>
+
+    <!-- Les 6 étapes -->
+    <ol class="steps">
+
+      <li class="step" data-step="echauffement">
+        <label class="step-check">
+          <input type="checkbox" aria-label="Étape 1 faite : échauffement vocal">
+          <span class="step-check-box" aria-hidden="true">1</span>
+        </label>
+        <details class="step-details">
+          <summary>
+            <span class="step-title">Échauffe ta voix</span>
+            <span class="step-time">3 min</span>
+          </summary>
+          <div class="step-body">
+            <p>
+              On ne court pas un sprint sans s'étirer, et on ne parle pas bien avec une voix encore endormie.
+              Trois minutes suffisent pour réveiller ton souffle et ta bouche.
+            </p>
+            <ul>
+              <li><strong>Respiration :</strong> inspire 4 secondes par le nez en gonflant le ventre, bloque 4 secondes, souffle 6 secondes par la bouche. Trois fois.</li>
+              <li><strong>Articulation :</strong> dis lentement puis de plus en plus vite « Un chasseur sachant chasser doit savoir chasser sans son chien ».</li>
+              <li><strong>Mâchoire :</strong> exagère « A-E-I-O-U » en ouvrant grand la bouche, comme si tu parlais à quelqu'un de l'autre côté de la rue.</li>
+            </ul>
+          </div>
+        </details>
+      </li>
+
+      <li class="step" data-step="sujet">
+        <label class="step-check">
+          <input type="checkbox" aria-label="Étape 2 faite : choisir un sujet du jour">
+          <span class="step-check-box" aria-hidden="true">2</span>
+        </label>
+        <details class="step-details">
+          <summary>
+            <span class="step-title">Choisis ton sujet du jour</span>
+            <span class="step-time">1 min</span>
+          </summary>
+          <div class="step-body">
+            <p>
+              Ne passe pas dix minutes à chercher le sujet parfait : c'est le meilleur moyen de ne jamais commencer.
+              Laisse le hasard décider pour toi.
+            </p>
+            <ul>
+              <li>Lance la <a href="roulette.html">Roulette de sujets</a> et garde le premier sujet qui tombe (ou le deuxième, je ne dirai rien 😉).</li>
+              <li>Tu préfères un sujet perso ? Raconte ta journée d'hier, un film récent, une idée qui te trotte dans la tête.</li>
+            </ul>
+          </div>
+        </details>
+      </li>
+
+      <li class="step" data-step="parler">
+        <label class="step-check">
+          <input type="checkbox" aria-label="Étape 3 faite : parler 2 minutes">
+          <span class="step-check-box" aria-hidden="true">3</span>
+        </label>
+        <details class="step-details">
+          <summary>
+            <span class="step-title">Parle 2 minutes sans t'arrêter</span>
+            <span class="step-time">2 min</span>
+          </summary>
+          <div class="step-body">
+            <p>
+              C'est le cœur de la routine. Deux minutes, c'est court… jusqu'au moment où tu dois les remplir.
+              Le but n'est pas d'être brillant·e, c'est de ne pas lâcher.
+            </p>
+            <ul>
+              <li><strong>Enregistre-toi</strong> avec le dictaphone de ton téléphone (ou filme-toi) : tu en auras besoin à l'étape suivante.</li>
+              <li><strong>Une structure simple :</strong> une phrase d'accroche, deux idées avec un exemple chacune, une phrase de conclusion.</li>
+              <li>Le chrono de 2 min de la <a href="roulette.html">Roulette</a> peut te servir de minuteur.</li>
+            </ul>
+          </div>
+        </details>
+      </li>
+
+      <li class="step" data-step="reecouter">
+        <label class="step-check">
+          <input type="checkbox" aria-label="Étape 4 faite : se réécouter">
+          <span class="step-check-box" aria-hidden="true">4</span>
+        </label>
+        <details class="step-details">
+          <summary>
+            <span class="step-title">Réécoute-toi (ou fais-toi un retour)</span>
+            <span class="step-time">3 min</span>
+          </summary>
+          <div class="step-body">
+            <p>
+              Oui, entendre sa propre voix, c'est bizarre. Tout le monde le pense, ça passe vite.
+              Écoute ton enregistrement en entier, sans te juger, comme si c'était celui d'un·e ami·e.
+            </p>
+            <ul>
+              <li><strong>Le débit :</strong> trop rapide, trop lent, ou ça respire bien ?</li>
+              <li><strong>Les tics :</strong> combien de « euh », « du coup », « en fait » ?</li>
+              <li><strong>La clarté :</strong> quelqu'un qui ne connaît pas le sujet aurait-il compris ton idée principale ?</li>
+              <li>Pas d'enregistrement ? Demande à quelqu'un qui t'a écouté·e : « Qu'est-ce que tu as retenu ? »</li>
+            </ul>
+          </div>
+        </details>
+      </li>
+
+      <li class="step" data-step="ameliorer">
+        <label class="step-check">
+          <input type="checkbox" aria-label="Étape 5 faite : identifier un point à améliorer">
+          <span class="step-check-box" aria-hidden="true">5</span>
+        </label>
+        <details class="step-details">
+          <summary>
+            <span class="step-title">Choisis UN point à améliorer</span>
+            <span class="step-time">1 min</span>
+          </summary>
+          <div class="step-body">
+            <p>
+              Un seul, vraiment. Vouloir tout corriger d'un coup, c'est la garantie de ne rien corriger du tout.
+              Note-le en une phrase qui commence par « La prochaine fois, je… ».
+            </p>
+            <ul>
+              <li>« La prochaine fois, je ralentis sur ma première phrase. »</li>
+              <li>« La prochaine fois, je remplace mes « euh » par un silence. »</li>
+              <li>« La prochaine fois, je termine par une vraie conclusion au lieu de « voilà ». »</li>
+            </ul>
+          </div>
+        </details>
+      </li>
+
+      <li class="step" data-step="reessayer">
+        <label class="step-check">
+          <input type="checkbox" aria-label="Étape 6 faite : refaire un essai">
+          <span class="step-check-box" aria-hidden="true">6</span>
+        </label>
+        <details class="step-details">
+          <summary>
+            <span class="step-title">Refais un essai en corrigeant ce point</span>
+            <span class="step-time">2 min</span>
+          </summary>
+          <div class="step-body">
+            <p>
+              Même sujet, deux minutes de nouveau, mais cette fois avec ton point d'amélioration en tête.
+              C'est là que la magie opère : tu sens tout de suite la différence.
+            </p>
+            <ul>
+              <li>Réécoute rapidement les deux versions l'une après l'autre : tu vas être surpris·e.</li>
+              <li>Pas encore parfait ? Normal. Garde ce point pour demain, il finira par devenir un réflexe.</li>
+              <li>Et surtout, félicite-toi : tu viens de faire ce que la plupart des gens n'osent pas faire 🎉</li>
+            </ul>
+          </div>
+        </details>
+      </li>
+
+    </ol>
+
+    <!-- Fin de routine -->
+    <section class="result-card routine-complete" id="routine-complete" hidden>
+      <p class="result-feedback">Routine bouclée ! 🎉</p>
+      <p class="result-detail">
+        Six étapes sur six, chapeau. Reviens demain pour une nouvelle session :
+        c'est la régularité qui fait la différence, pas la perfection.
+      </p>
+    </section>
+
+    <div class="game-actions">
+      <button type="button" class="btn btn-ghost" id="reset-btn">Recommencer la routine</button>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Fait avec 🧡 pour celles et ceux qui veulent oser parler.</p>
+    <p class="footer-small">© <span id="year"></span> Ose l'oral</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/ma-routine.js"></script>
+</body>
+</html>

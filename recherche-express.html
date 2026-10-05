@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recherche Express — Ose l'oral</title>
+  <meta name="description" content="15 minutes pour fouiller un sujet tiré au hasard, puis à toi de le présenter à voix haute, chrono en main.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="index.html" class="logo">
+      <span class="logo-bubble" aria-hidden="true">💬</span>
+      <span class="logo-text">Ose l'oral</span>
+    </a>
+  </header>
+
+  <main class="game-page game-page--coral">
+
+    <a href="index.html" class="back-link">← Tous les jeux</a>
+
+    <div class="game-intro">
+      <span class="game-icon" aria-hidden="true">🔎</span>
+      <h1 class="game-title">Recherche Express</h1>
+      <p class="game-lead">
+        Je te donne un sujet et 15 minutes pour te renseigner où tu veux : articles, vidéos, ta propre tête.
+        Ensuite, c'est le moment de briller : tu le présentes à voix haute.
+      </p>
+    </div>
+
+    <!-- Écran 1 : tirage du sujet -->
+    <section class="game-screen" id="screen-draw">
+      <div class="topic-card" aria-label="Ton sujet">
+        <span class="topic-category" id="draw-category" hidden></span>
+        <p class="topic-text" id="draw-text" aria-live="polite">
+          Prêt·e à creuser un sujet ? Tire-le au sort 🎲
+        </p>
+      </div>
+
+      <div class="game-actions game-actions--stack">
+        <button type="button" class="btn btn-game btn-big" id="draw-btn">Tirer mon sujet</button>
+        <button type="button" class="btn btn-ghost" id="redraw-btn" hidden>Un autre sujet</button>
+      </div>
+
+      <div class="tips">
+        <h2 class="tips-title">Comment jouer</h2>
+        <ul class="tips-list">
+          <li><strong>15 minutes de recherche :</strong> note 3 idées clés, un exemple concret et une phrase de conclusion.</li>
+          <li><strong>Fini avant la fin ?</strong> Clique sur « J'ai fini », pas besoin d'attendre.</li>
+          <li><strong>Puis tu présentes :</strong> seul·e, face caméra ou devant quelqu'un. Le chrono mesure ton temps de parole.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Écran 2 : phase recherche (compte à rebours) -->
+    <section class="game-screen" id="screen-research" hidden>
+      <p class="phase-badge">Étape 1 · Recherche</p>
+
+      <div class="topic-card" aria-label="Ton sujet">
+        <span class="topic-category" id="research-category"></span>
+        <p class="topic-text" id="research-text"></p>
+      </div>
+
+      <div class="timer-panel timer">
+        <p class="timer-display" id="research-display" role="timer" aria-live="off">15:00</p>
+        <div class="timer-bar" aria-hidden="true"><div class="timer-bar-fill" id="research-bar"></div></div>
+        <p class="timer-message" id="research-message" aria-live="polite">Fouille, note, prépare. Je garde l'œil sur l'heure ⏳</p>
+        <div class="timer-controls">
+          <button type="button" class="btn btn-ghost" id="pause-btn">Pause</button>
+          <button type="button" class="btn btn-game" id="done-btn">J'ai fini →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Écran 3 : phase présentation (chrono qui monte) -->
+    <section class="game-screen" id="screen-present" hidden>
+      <p class="phase-badge">Étape 2 · Présentation</p>
+      <p class="timer-message" id="present-message" aria-live="polite"></p>
+
+      <div class="topic-card topic-card--big" aria-label="Ton sujet">
+        <span class="topic-category" id="present-category"></span>
+        <p class="topic-text" id="present-text"></p>
+      </div>
+
+      <div class="stopwatch">
+        <p class="stopwatch-display" id="present-display" role="timer" aria-live="off">0:00</p>
+        <p class="stopwatch-hint">À toi la parole 🎤</p>
+      </div>
+
+      <div class="game-actions">
+        <button type="button" class="btn btn-game btn-big" id="finish-btn">Terminer</button>
+      </div>
+    </section>
+
+    <!-- Écran 4 : récap -->
+    <section class="game-screen" id="screen-end" hidden>
+      <div class="result-card" id="result-card">
+        <p class="result-feedback">Bravo, c'est dans la boîte ! 🎉</p>
+        <p class="result-label">Ton sujet</p>
+        <p class="result-topic" id="end-topic"></p>
+        <dl class="recap">
+          <div class="recap-item">
+            <dt>Recherche</dt>
+            <dd id="end-research">0:00</dd>
+          </div>
+          <div class="recap-item">
+            <dt>Présentation</dt>
+            <dd id="end-present">0:00</dd>
+          </div>
+        </dl>
+        <p class="result-detail" id="end-detail"></p>
+      </div>
+
+      <div class="game-actions game-actions--stack">
+        <button type="button" class="btn btn-game btn-big" id="replay-btn">Rejouer avec un nouveau sujet</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Fait avec 🧡 pour celles et ceux qui veulent oser parler.</p>
+    <p class="footer-small">© <span id="year"></span> Ose l'oral</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/sujets.js"></script>
+  <script src="js/timer.js"></script>
+  <script src="js/recherche-express.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roulette de sujets — Ose l'oral</title>
+  <meta name="description" content="Un sujet tiré au hasard, zéro préparation : parle tout de suite. Avec un chrono optionnel de 1 à 3 minutes.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="index.html" class="logo">
+      <span class="logo-bubble" aria-hidden="true">💬</span>
+      <span class="logo-text">Ose l'oral</span>
+    </a>
+  </header>
+
+  <main class="game-page game-page--sun">
+
+    <a href="index.html" class="back-link">← Tous les jeux</a>
+
+    <div class="game-intro">
+      <span class="game-icon" aria-hidden="true">🎡</span>
+      <h1 class="game-title">Roulette de sujets</h1>
+      <p class="game-lead">
+        Je te tire un sujet au hasard, et toi tu en parles. Tout de suite, sans préparer.
+        C'est l'exercice parfait pour muscler ton impro !
+      </p>
+    </div>
+
+    <!-- Sujet tiré -->
+    <section class="topic-card" aria-label="Sujet tiré">
+      <span class="topic-category" id="topic-category" hidden></span>
+      <p class="topic-text" id="topic-text" aria-live="polite">
+        Clique sur le bouton, le hasard s'occupe du reste 🎲
+      </p>
+    </section>
+
+    <div class="game-actions">
+      <button type="button" class="btn btn-game btn-big" id="spin-btn">Lancer la roulette</button>
+    </div>
+
+    <!-- Chrono optionnel -->
+    <section class="timer-panel" aria-labelledby="timer-title">
+      <h2 class="timer-title" id="timer-title">Chrono <span class="muted">(optionnel)</span></h2>
+
+      <div class="chip-group" role="radiogroup" aria-label="Durée du chrono">
+        <label class="chip"><input type="radio" name="duration" value="0" checked><span>Sans chrono</span></label>
+        <label class="chip"><input type="radio" name="duration" value="60"><span>1 min</span></label>
+        <label class="chip"><input type="radio" name="duration" value="120"><span>2 min</span></label>
+        <label class="chip"><input type="radio" name="duration" value="180"><span>3 min</span></label>
+      </div>
+
+      <div class="timer" id="timer" hidden>
+        <p class="timer-display" id="timer-display" role="timer" aria-live="off">1:00</p>
+        <div class="timer-bar" aria-hidden="true"><div class="timer-bar-fill" id="timer-bar-fill"></div></div>
+        <p class="timer-message" id="timer-message" aria-live="polite"></p>
+        <div class="timer-controls">
+          <button type="button" class="btn btn-game" id="timer-start">C'est parti !</button>
+          <button type="button" class="btn btn-ghost" id="timer-reset">Recommencer</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Conseils -->
+    <section class="tips">
+      <h2 class="tips-title">Comment jouer</h2>
+      <ul class="tips-list">
+        <li><strong>Seul·e :</strong> lance un sujet, parle à voix haute (ou face caméra) et enchaîne avec « Sujet suivant ».</li>
+        <li><strong>En groupe :</strong> chacun son tour lance la roulette et prend la parole devant les autres.</li>
+        <li><strong>Bloqué·e ?</strong> Commence par « Pour moi… » et donne un exemple perso : le reste vient tout seul.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Fait avec 🧡 pour celles et ceux qui veulent oser parler.</p>
+    <p class="footer-small">© <span id="year"></span> Ose l'oral</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/sujets.js"></script>
+  <script src="js/timer.js"></script>
+  <script src="js/roulette.js"></script>
+</body>
+</html>

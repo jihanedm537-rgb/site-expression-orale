@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parle ou Perds — Ose l'oral</title>
+  <meta name="description" content="Parle sans t'arrêter sur un sujet tiré au hasard. Pas de silence, pas de « euh » : tiens le plus longtemps possible et bats ton record.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="index.html" class="logo">
+      <span class="logo-bubble" aria-hidden="true">💬</span>
+      <span class="logo-text">Ose l'oral</span>
+    </a>
+  </header>
+
+  <main class="game-page game-page--teal">
+
+    <a href="index.html" class="back-link">← Tous les jeux</a>
+
+    <div class="game-intro">
+      <span class="game-icon" aria-hidden="true">🔥</span>
+      <h1 class="game-title">Parle ou Perds</h1>
+      <p class="game-lead">
+        Je te donne un sujet, tu parles. Sans t'arrêter, sans silence, sans « euh ».
+        Dès que tu cales, tu cliques sur « J'arrête ». Combien de temps vas-tu tenir&nbsp;?
+      </p>
+    </div>
+
+    <p class="record-banner" id="record-banner" aria-live="polite"></p>
+
+    <!-- Écran 1 : avant de jouer -->
+    <section class="game-screen" id="screen-ready">
+      <div class="tips">
+        <h2 class="tips-title">Les règles</h2>
+        <ul class="tips-list">
+          <li><strong>Un sujet surprise</strong> tombe, tu as 3 secondes pour le lire.</li>
+          <li><strong>Tu parles en continu</strong> à voix haute, le chrono monte.</li>
+          <li><strong>Un blanc, un « euh », une hésitation ?</strong> Sois honnête : clique sur « J'arrête ».</li>
+        </ul>
+      </div>
+      <div class="game-actions">
+        <button type="button" class="btn btn-game btn-big" id="ready-btn">Je suis prêt·e !</button>
+      </div>
+    </section>
+
+    <!-- Écran 2 : en jeu -->
+    <section class="game-screen" id="screen-play" hidden>
+      <div class="topic-card" aria-label="Ton sujet">
+        <span class="topic-category" id="topic-category"></span>
+        <p class="topic-text" id="topic-text"></p>
+      </div>
+
+      <div class="stopwatch">
+        <p class="stopwatch-display" id="stopwatch-display" role="timer" aria-live="off">0:00</p>
+        <p class="stopwatch-hint" id="stopwatch-hint" aria-live="polite"></p>
+      </div>
+
+      <div class="game-actions">
+        <button type="button" class="btn btn-stop btn-big" id="stop-btn" disabled>J'arrête</button>
+      </div>
+    </section>
+
+    <!-- Écran 3 : résultat -->
+    <section class="game-screen" id="screen-result" hidden>
+      <div class="result-card" id="result-card">
+        <p class="result-label">Tu as tenu</p>
+        <p class="result-time" id="result-time">0:00</p>
+        <p class="result-feedback" id="result-feedback"></p>
+        <p class="result-detail" id="result-detail"></p>
+      </div>
+
+      <div class="game-actions game-actions--stack">
+        <button type="button" class="btn btn-game btn-big" id="replay-btn">Rejouer avec un nouveau sujet</button>
+        <button type="button" class="btn btn-ghost" id="retry-btn">Revanche sur le même sujet</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Fait avec 🧡 pour celles et ceux qui veulent oser parler.</p>
+    <p class="footer-small">© <span id="year"></span> Ose l'oral</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/sujets.js"></script>
+  <script src="js/timer.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/parle-ou-perds.js"></script>
+</body>
+</html>

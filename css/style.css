@@ -321,6 +321,651 @@ img {
 }
 
 /* --------------------------------------------------------------------------
+   Pages de jeu (structure commune)
+   Chaque page choisit sa couleur avec une classe game-page--coral/sun/teal/violet
+   -------------------------------------------------------------------------- */
+
+.game-page {
+  --game-accent: var(--color-coral);
+  --game-bg: var(--color-coral-light);
+  --game-on-accent: #fff;
+
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0.5rem var(--gutter) 4rem;
+}
+
+.game-page--coral  { --game-accent: var(--color-coral);  --game-bg: var(--color-coral-light);  --game-on-accent: #fff; }
+.game-page--sun    { --game-accent: var(--color-sun);    --game-bg: var(--color-sun-light);    --game-on-accent: var(--color-ink); }
+.game-page--teal   { --game-accent: var(--color-teal);   --game-bg: var(--color-teal-light);   --game-on-accent: var(--color-ink); }
+.game-page--violet { --game-accent: var(--color-violet); --game-bg: var(--color-violet-light); --game-on-accent: #fff; }
+
+.back-link {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-ink-soft);
+  margin-bottom: 1.25rem;
+}
+
+.back-link:hover {
+  color: var(--color-ink);
+}
+
+.game-intro {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.game-intro .game-icon {
+  margin: 0 auto 0.75rem;
+  background: var(--game-accent);
+  box-shadow: var(--shadow-pop);
+  transform: rotate(-6deg);
+}
+
+.game-title {
+  font-size: clamp(1.9rem, 7vw, 2.6rem);
+  margin-bottom: 0.75rem;
+}
+
+.game-lead {
+  font-size: 1.05rem;
+  color: var(--color-ink-soft);
+}
+
+.muted {
+  color: var(--color-ink-soft);
+  font-weight: 500;
+}
+
+.btn-game {
+  background: var(--game-accent);
+  color: var(--game-on-accent);
+}
+
+.btn-ghost {
+  background: var(--color-surface);
+  color: var(--color-ink);
+}
+
+.btn-big {
+  font-size: 1.25rem;
+  padding: 1rem 2rem;
+  width: 100%;
+  max-width: 360px;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+  transform: none;
+  box-shadow: var(--shadow-pop);
+}
+
+.game-actions {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0 2.5rem;
+}
+
+/* Carte du sujet tiré */
+
+.topic-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  min-height: 220px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  background: var(--game-bg);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-pop);
+}
+
+.topic-category {
+  font-size: 0.9rem;
+  font-weight: 700;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.2rem 0.8rem;
+}
+
+.topic-text {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.4rem, 5.5vw, 2rem);
+  line-height: 1.25;
+}
+
+.topic-card.is-spinning .topic-text,
+.topic-card.is-spinning .topic-category {
+  opacity: 0.55;
+  filter: blur(0.5px);
+}
+
+.topic-card.is-landed {
+  animation: topic-pop 0.45s ease;
+}
+
+@keyframes topic-pop {
+  0%   { transform: scale(0.96) rotate(0); }
+  50%  { transform: scale(1.03) rotate(-1deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+/* Chrono */
+
+.timer-panel {
+  padding: 1.5rem;
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  margin-bottom: 2rem;
+}
+
+.timer-title {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.chip span {
+  display: inline-block;
+  font-weight: 700;
+  padding: 0.45rem 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.chip span:hover {
+  transform: translateY(-1px);
+}
+
+.chip input:checked + span {
+  background: var(--game-accent);
+  color: var(--game-on-accent);
+  box-shadow: 2px 2px 0 var(--color-border);
+}
+
+.chip input:focus-visible + span {
+  outline: 3px solid var(--color-violet);
+  outline-offset: 2px;
+}
+
+.timer {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.timer-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(3rem, 16vw, 4.5rem);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.timer-bar {
+  height: 14px;
+  margin: 1rem 0;
+  background: var(--game-bg);
+  border: 2px solid var(--color-border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.timer-bar-fill {
+  width: 0;
+  height: 100%;
+  background: var(--game-accent);
+  transition: width 0.2s linear;
+}
+
+.timer-message {
+  min-height: 1.6em;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.timer.is-done .timer-display {
+  color: var(--color-coral);
+  animation: topic-pop 0.45s ease;
+}
+
+.timer-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+/* Conseils */
+
+.tips {
+  padding: 1.5rem;
+  border: var(--border-width) dashed rgba(43, 30, 22, 0.35);
+  border-radius: var(--radius-lg);
+}
+
+.tips-title {
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.tips-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--color-ink-soft);
+}
+
+.tips-list li + li {
+  margin-top: 0.5rem;
+}
+
+.tips-list strong {
+  color: var(--color-ink);
+}
+
+/* Boutons empilés (écran de résultat) */
+
+.game-actions--stack {
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+/* Bandeau du record */
+
+.record-banner {
+  width: fit-content;
+  margin: 0 auto 1.75rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.35rem 1.1rem;
+  box-shadow: 2px 2px 0 var(--color-border);
+  text-align: center;
+}
+
+/* Chrono qui monte (Parle ou Perds) */
+
+.stopwatch {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.stopwatch-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(4rem, 22vw, 6.5rem);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.stopwatch-display.is-countdown {
+  color: var(--game-accent);
+  -webkit-text-stroke: 2px var(--color-border);
+}
+
+.stopwatch-display.is-pulse {
+  animation: countdown-pulse 0.6s ease;
+}
+
+.stopwatch-display.is-record {
+  color: var(--color-coral);
+}
+
+@keyframes countdown-pulse {
+  0%   { transform: scale(1.5); opacity: 0; }
+  60%  { transform: scale(0.95); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+.stopwatch-hint {
+  min-height: 1.6em;
+  margin-top: 0.75rem;
+  font-weight: 700;
+  color: var(--color-ink-soft);
+}
+
+.btn-stop {
+  background: var(--color-coral);
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 1.1rem 2rem;
+}
+
+/* Carte de résultat */
+
+.result-card {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  background: var(--game-bg);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-pop);
+}
+
+.result-card.is-landed {
+  animation: topic-pop 0.45s ease;
+}
+
+.result-card.is-record {
+  background: var(--color-sun-light);
+}
+
+.result-label {
+  font-weight: 700;
+  color: var(--color-ink-soft);
+}
+
+.result-time {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(3.5rem, 18vw, 5.5rem);
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.result-feedback {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin-top: 0.75rem;
+}
+
+.result-detail {
+  margin-top: 0.5rem;
+  color: var(--color-ink-soft);
+}
+
+/* Recherche Express : étapes, grand sujet, récap */
+
+.phase-badge {
+  width: fit-content;
+  margin: 0 auto 1rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--game-on-accent);
+  background: var(--game-accent);
+  border: 2px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.25rem 1rem;
+  transform: rotate(-2deg);
+}
+
+.game-screen > .topic-card + .timer-panel {
+  margin-top: 1.5rem;
+}
+
+#screen-present > .timer-message {
+  text-align: center;
+}
+
+.topic-card--big {
+  min-height: 280px;
+}
+
+.topic-card--big .topic-text {
+  font-size: clamp(1.8rem, 8vw, 2.8rem);
+}
+
+.result-topic {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.3rem;
+  line-height: 1.3;
+  margin: 0.25rem 0 1.25rem;
+}
+
+.recap {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0 0 1rem;
+}
+
+.recap-item {
+  flex: 1;
+  max-width: 180px;
+  padding: 0.75rem;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.recap dt {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-ink-soft);
+}
+
+.recap dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Ma Routine : progression + checklist dépliable */
+
+.routine-progress {
+  margin-bottom: 1.75rem;
+  text-align: center;
+}
+
+.routine-progress-text {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.steps {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.step {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+/* la ligne pointillée qui relie les pastilles, façon parcours :
+   elle part sous la pastille et descend jusqu'à celle de l'étape suivante */
+.step:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: calc(2.75rem / 2 - 1px);
+  top: calc(0.55rem + 2.75rem + 4px);
+  bottom: calc(-1rem - 0.55rem + 4px);
+  border-left: var(--border-width) dashed rgba(43, 30, 22, 0.3);
+}
+
+.step-check {
+  position: relative;
+  flex-shrink: 0;
+  margin-top: 0.55rem;
+  cursor: pointer;
+}
+
+.step-check input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+
+.step-check-box {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: 50%;
+  box-shadow: 2px 2px 0 var(--color-border);
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.step-check:hover .step-check-box {
+  transform: scale(1.06);
+}
+
+.step-check input:checked + .step-check-box {
+  background: var(--game-accent);
+  color: transparent;
+  position: relative;
+}
+
+/* coche affichée à la place du numéro */
+.step-check input:checked + .step-check-box::after {
+  content: "✓";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--game-on-accent);
+  font-size: 1.5rem;
+}
+
+.step-check input:focus-visible + .step-check-box {
+  outline: 3px solid var(--color-violet);
+  outline-offset: 3px;
+}
+
+.step-details {
+  flex: 1;
+  min-width: 0;
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-pop);
+  transition: background 0.2s ease;
+}
+
+.step-details summary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.95rem 1.1rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.step-details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* chevron qui pivote à l'ouverture */
+.step-details summary::after {
+  content: "";
+  flex-shrink: 0;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-right: 2.5px solid var(--color-ink);
+  border-bottom: 2.5px solid var(--color-ink);
+  transform: rotate(45deg) translate(-2px, -2px);
+  transition: transform 0.2s ease;
+}
+
+.step-details[open] summary::after {
+  transform: rotate(-135deg) translate(-2px, -2px);
+}
+
+.step-title {
+  flex: 1;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  line-height: 1.3;
+}
+
+.step-time {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: var(--game-bg);
+  border: 1.5px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.1rem 0.6rem;
+}
+
+.step-body {
+  padding: 0 1.1rem 1.1rem;
+  color: var(--color-ink-soft);
+}
+
+.step-body ul {
+  margin: 0.75rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.step-body li + li {
+  margin-top: 0.4rem;
+}
+
+.step-body strong {
+  color: var(--color-ink);
+}
+
+.step-body a {
+  color: var(--color-violet);
+  font-weight: 700;
+}
+
+.step.is-done .step-details {
+  background: var(--game-bg);
+}
+
+.step.is-done .step-title {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--game-accent);
+}
+
+.routine-complete {
+  margin-bottom: 1rem;
+}
+
+.routine-complete.is-landed {
+  animation: topic-pop 0.45s ease;
+}
+
+/* --------------------------------------------------------------------------
    Pied de page
    -------------------------------------------------------------------------- */
 
@@ -371,5 +1016,6 @@ img {
   *::before,
   *::after {
     transition: none !important;
+    animation: none !important;
   }
 }
